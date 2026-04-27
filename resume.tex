@@ -1,0 +1,180 @@
+%-------------------------
+% ATS-Friendly Resume in LaTeX
+% Author : KARTHIK BABU
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+% Use Roboto font for better readability and space efficiency
+\usepackage[sfdefault]{roboto}
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins - tighter for one page
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING - CENTERED----------
+\begin{center}
+    \textbf{\Huge \scshape KARTHIK BABU} \\ \vspace{1pt}
+    \small Software Engineer \\ \vspace{3pt}
+    \small \href{mailto:karthikbabu3026@gmail.com}{karthikbabu3026@gmail.com} $|$ 
+    +91 8075547810 $|$ 
+    \href{https://www.linkedin.com/in/karthikbabudatanalyst/}{LinkedIn} $|$
+    \href{https://github.com/Karthi2001MCA}{GitHub} $|$
+    \href{https://karthikbabu.github.io/Karthik-Portfolio/}{Portfolio}
+\end{center}
+\vspace{-5pt}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+  \small{Software Engineer with a strong foundation in building scalable backend systems and microservices using Python and FastAPI. Passionate about writing clean, maintainable code adhering to SOLID principles and Object-Oriented Design. Experienced in designing RESTful APIs, optimizing database performance, and deploying cloud-native applications on AWS. collaborative team player committed to delivering high-quality software in fast-paced Agile environments.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Backend Development:} Microservices Architecture, API Design (REST), System Scalability, Clean Code, SOLID Principles, OOP, Design Patterns \\
+     \textbf{Languages \& Databases:} Python (Advanced), SQL (MySQL, PostgreSQL), NoSQL (MongoDB), C++, JavaScript \\
+     \textbf{Cloud \& DevOps:} AWS (EC2, S3, Lambda), Docker, CI/CD Pipelines, Git, Linux \\
+     \textbf{Core Competencies:} Algorithm Optimization, Problem Solving, Agile Methodologies, Cross-functional Collaboration \\ \textbf{Certifications:} AWS Certified Cloud Practitioner, IBM Backend Development
+    }}
+ \end{itemize}
+ \vspace{-8pt}
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AI ML Development Engineer}{May 2025 -- Present}
+      {Think Neural AI}{Remote}
+      \resumeItemListStart
+        \resumeItem{Developed scalable backend services for processing high-volume retail sensor data, reducing API latency by 40\% through code optimization and efficient database indexing.}
+        \resumeItem{Collaborated with cross-functional Agile teams to design and implement robust microservices, ensuring high availability and system reliability.}
+        \resumeItem{Refactored legacy codebases to improve readability and maintainability, implementing automated testing frameworks to ensure code quality.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Data Scientist Intern}{March 2024 -- October 2024}
+      {Innodatatics}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Designed and maintained normalized database schemas for large-scale customer data, ensuring data integrity and optimizing query performance.}
+        \resumeItem{Built and deployed RESTful APIs to support internal data dashboards, enabling real-time data access for operations teams.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+  \vspace{-3pt}
+
+%-----------PROJECTS-----------
+\section{Key Projects}
+    \resumeSubHeadingListStart
+    
+      \resumeProjectHeading
+          {\textbf{Retail Management System (Microservices)}}{May 2024 -- Present}
+          \resumeItemListStart
+            \resumeItem{Architected a comprehensive retail management system using FastAPI and React, featuring a microservices-based backend for modular scalability.}
+            \resumeItem{Implemented secure authentication, inventory management, and real-time sales tracking, deploying the solution on AWS using Docker containers. \textit{Tech: Python, FastAPI, React, Docker, AWS}}
+          \resumeItemListEnd
+          
+      \resumeProjectHeading
+          {\textbf{Sakshi.AI - High-Performance Video Analytics}}{May 2025 -- Present}
+          \resumeItemListStart
+            \resumeItem{Engineered high-throughput video processing pipelines capable of handling multiple real-time streams with minimal latency.}
+            \resumeItem{Optimized computer vision algorithms for edge devices, reducing computational load while maintaining detection accuracy. \textit{Tech: Python, OpenCV, System Optimization}}
+          \resumeItemListEnd
+          
+      \resumeProjectHeading
+          {\textbf{Solar Power System Reliability Optimization}}{November 2024 -- January 2025}
+          \resumeItemListStart
+            \resumeItem{Developed a predictive maintenance system using machine learning to detect component defects early, enhancing overall system reliability and uptime.}
+            \resumeItem{Integrated data processing modules to analyze historical generation patterns, optimizing energy output efficiency. \textit{Tech: Python, ML Pipelines, Reliability Engineering}}
+          \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+    \vspace{-3pt}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Masters in Computer Application (MCA) - AI Specialization}{2023 -- 2025}
+      {Amrita Vishwa Vidyapeetham (Amrita AHEAD)}{}
+    \resumeSubheading
+      {Bachelor of Science in Computer Science}{2020 -- 2023}
+      {College of Applied Science Koothuparamba, Kannur, India}{}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

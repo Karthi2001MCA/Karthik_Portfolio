@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords"
+    content="KARTHIK BABU, portfolio, Data Scientist, AI Engineer, 3D Portfolio, Machine Learning" />
+  <meta name="description"
+    content="KARTHIK BABU's 'Quantum' Portfolio - Data Scientist & AI Engineer. Interactive 3D Experience." />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Favicon -->
+  <link id='favicon' rel="shortcut icon" href="./assets/images/misc/favicon1.png" type="image/x-png">
+
+  <title>KARTHIK BABU | AI & Data Scientist</title>
+
+  <!-- Three.js (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- Vanta.js or Custom Script will go here -->
+</head>
+
+<body oncontextmenu="return false">
+
+  <!-- 3D Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- pre loader -->
+  <!-- <div class="loader-container">
+  <img draggable="false" src="./assets/images/preloader.gif" alt="">
+</div> -->
+
+  <!-- 3D Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navbar -->
+  <header>
+    <a href="/" class="logo"><i class="fab fa-connectdevelop"></i> KARTHIK BABU</a>
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="content">
+        <h2>Hello,<br>I'm <span class="text-gradient">KARTHIK BABU</span></h2>
+        <h3 style="font-size: 2.5rem; margin-bottom: 2rem;">I am a <span class="typing-text"
+            style="color:var(--secondary);"></span></h3>
+        <p>Aspiring Machine Learning Engineer | Python | SQL | Data Analytics | Power BI</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/karthikbabudatanalyst/" target="_blank"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/Karthi2001MCA" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:karthikbabu3026@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://t.me/Karthikbabu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <br>
+        <a href="#about" class="btn">View My Work <i class="fas fa-arrow-down"></i></a>
+      </div>
+    </div>
+    <!-- 3D Background Interaction Area is the whole screen -->
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="glass-card about-content">
+        <div class="about-img">
+          <!-- Using existing image path -->
+          <img src="./assets/images/profile/profile_karthik.jpeg" alt="KARTHIK BABU" style="width:100%; height:auto;">
+        </div>
+        <div class="about-text">
+          <h3>Aspiring AI Engineer from Kerala, India</h3>
+          <p style="margin: 1.5rem 0; color: var(--text-muted);">
+            Aspiring Machine Learning Engineer with hands-on experience in data analysis, Python and SQL. Skilled in data preprocessing, exploratory data analysis, and building data-driven solutions using Power BI. Strong interest in machine learning, model development, and AI-driven applications with a passion for solving real-world problems using data.
+          </p>
+          <div class="grid-container" style="margin-bottom: 2rem;">
+            <div>
+              <strong>Email:</strong> karthikbabu3026@gmail.com
+            </div>
+            <div>
+              <strong>Phone:</strong> +91 8075547810
+            </div>
+            <div>
+              <strong>Location:</strong> Kerala, India
+            </div>
+            <div>
+              <strong>Degree:</strong> MCA (CGPA: 7.15/10)
+            </div>
+          </div>
+          <a href="https://drive.google.com/file/d/1fIS4qgvd2s7hiZ1prhsJMhGLaLPoE50k/view?usp=drive_link"
+            target="_blank" class="btn" style="display: none;">Download Resume <i class="fas fa-download"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div id="skillsContainer" class="grid-container">
+        <!-- Skills will be loaded by data-skills.js, but we need to ensure their styles work -->
+        <!-- Just a placeholder for now to see layout -->
+        <div class="glass-card" style="text-align:center;">
+          <i class="fab fa-python" style="font-size: 3rem; color: var(--secondary);"></i>
+          <h3 style="margin-top: 1rem;">Python</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="glass-card" style="display:flex; flex-direction:column; gap:2rem;">
+
+        <div style="display:flex; gap:2rem; align-items:center;">
+          <img src="./assets/images/education/SNGCE_MCA.jfif" alt="SNGCE"
+            style="width:80px; height:80px; border-radius:10px; object-fit:cover;">
+          <div>
+            <h3 style="color:var(--primary);">Master of Computer Applications (MCA)</h3>
+            <p style="color:var(--text-muted);">Sree Narayana Gurukulam College of Engineering</p>
+            <p><strong>7.5 CGPA</strong></p>
+          </div>
+        </div>
+
+        <hr style="border-color:var(--glass-border);">
+
+        <div style="display:flex; gap:2rem; align-items:center;">
+          <img src="./assets/images/education/MGU_BCA.jfif" alt="MGU"
+            style="width:80px; height:80px; border-radius:10px; object-fit:cover;">
+          <div>
+            <h3 style="color:var(--primary);">Bachelor of Computer Applications (BCA)</h3>
+            <p style="color:var(--text-muted);">Mahatma Gandhi University (MGU)</p>
+            <p><strong>Completed</strong></p>
+          </div>
+        </div>
+
+        <hr style="border-color:var(--glass-border);">
+
+        <div style="display:flex; gap:2rem; align-items:center;">
+          <img src="./assets/images/education/LUMINAR_intern.jpg" alt="Luminar Technolab"
+            style="width:80px; height:80px; border-radius:10px; object-fit:cover;">
+          <div>
+            <h3 style="color:var(--primary);">6-Month Internship in Python Data Analytics</h3>
+            <p style="color:var(--text-muted);">Luminar Technolab, Kochi</p>
+            <p><strong>Completed</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="grid-container">
+
+        <div class="glass-card">
+          <span style="color:var(--secondary); font-size:1.4rem;">Mar 2026 - Present</span>
+          <h3 style="margin: 1rem 0;">AI Engineer Intern</h3>
+          <p style="color:var(--text-muted);">ThinkNeural AI</p>
+        </div>
+
+        <div class="glass-card">
+          <span style="color:var(--secondary); font-size:1.4rem;">Oct 2025 - Mar 2026</span>
+          <h3 style="margin: 1rem 0;">Python Data Analytics Intern</h3>
+          <p style="color:var(--text-muted);">Luminar Technolab</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (renamed from 'work') -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="box-container grid-container">
+        <!-- Projects loaded via JS -->
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="./pages/projects.html" class="btn">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <!-- Certificates Section disabled -->
+    <div class="container">
+      <h2 class="section-title">Certificates</h2>
+      <div class="carousel-container">
+        <!-- Certificates loaded via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
+        <form id="contact-form">
+          <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <input type="text" name="name" placeholder="Name" class="glass-card"
+              style="width:100%; border:1px solid var(--glass-border); background:rgba(255,255,255,0.05); color:var(--text-main); padding:1rem;">
+            <input type="email" name="email" placeholder="Email" class="glass-card"
+              style="width:100%; border:1px solid var(--glass-border); background:rgba(255,255,255,0.05); color:var(--text-main); padding:1rem;">
+            <textarea name="message" placeholder="Message" cols="30" rows="5" class="glass-card"
+              style="width:100%; border:1px solid var(--glass-border); background:rgba(255,255,255,0.05); color:var(--text-main); padding:1rem;"></textarea>
+            <button type="submit" class="btn" style="width:100%;">Send Message <i
+                class="fas fa-paper-plane"></i></button>
+          </div>
+        </form>
+        <div style="margin-top:2rem; text-align:center;">
+          <p>Email: <a href="mailto:karthikbabu3026@gmail.com"
+              style="color:var(--primary);">karthikbabu3026@gmail.com</a></p>
+          <div class="socials" style="justify-content:center; margin-top:1rem;">
+            <a href="https://www.linkedin.com/in/karthikbabudatanalyst/" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Karthi2001MCA" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/Karthikbabu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Designed with <i class="fas fa-heart" style="color:var(--accent);"></i> by KARTHIK BABU</p>
+    <p>&copy; 2025 All Rights Reserved.</p>
+  </footer>
+
+
+  <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+  <!-- jquery cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- typed.js cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"
+    integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- particle.js links -->
+  <script src="./assets/js/particles.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+
+  <!-- vanilla tilt.js links -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"
+    integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- scroll reveal anim -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
+
+  <script src="./assets/js/data-skills.js"></script>
+  <script src="./assets/js/data-projects.js"></script>
+  <script src="./assets/js/data-certificates.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/three-bg.js"></script>
+
+</body>
+
+</html>
