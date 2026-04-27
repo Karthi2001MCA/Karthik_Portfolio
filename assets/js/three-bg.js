@@ -1,12 +1,12 @@
 /* 
   QUANTUM THEME - 3D BACKGROUND LOGIC
-  - Neural Constellation Animation (Connected Nodes)
-  - Interactive & Futuristic
+  - Blue Matrix Digital Rain Effect
+  - Reactive to Window Resize
 */
 const canvas = document.querySelector('#bg-canvas');
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     alpha: true,
@@ -16,149 +16,69 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// --- SETTINGS ---
-const particleCount = 200;
-const maxDistance = 150;
-const nodes = [];
-
-// --- NODE GROUP ---
-const group = new THREE.Group();
-scene.add(group);
-
-// --- GEOMETRY & MATERIALS ---
+// --- MATRIX RAIN SETUP ---
 const particlesGeometry = new THREE.BufferGeometry();
-const particlePositions = new Float32Array(particleCount * 3);
+const count = 6000; // Dense rain
 
-const lineGeometry = new THREE.BufferGeometry();
-const linePositions = new Float32Array(particleCount * particleCount * 3);
-const lineColors = new Float32Array(particleCount * particleCount * 3);
+const positions = new Float32Array(count * 3);
 
-for (let i = 0; i < particleCount; i++) {
-    const x = (Math.random() - 0.5) * 800;
-    const y = (Math.random() - 0.5) * 800;
-    const z = (Math.random() - 0.5) * 800;
-
-    particlePositions[i * 3] = x;
-    particlePositions[i * 3 + 1] = y;
-    particlePositions[i * 3 + 2] = z;
-
-    nodes.push({
-        x, y, z,
-        velocity: new THREE.Vector3(
-            (Math.random() - 0.5) * 0.5,
-            (Math.random() - 0.5) * 0.5,
-            (Math.random() - 0.5) * 0.5
-        )
-    });
+for (let i = 0; i < count; i++) {
+    const i3 = i * 3;
+    positions[i3] = (Math.random() - 0.5) * 150; // Spread wide
+    positions[i3 + 1] = Math.random() * 100 - 50; // Spread vertically
+    positions[i3 + 2] = (Math.random() - 0.5) * 50; // Depth
 }
 
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3).setUsage(THREE.DynamicDrawUsage));
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
 const particlesMaterial = new THREE.PointsMaterial({
-    color: 0x00aaff,
-    size: 4,
-    blending: THREE.AdditiveBlending,
+    color: 0x00aaff, // Matrix Blue
+    size: 0.15,
+    sizeAttenuation: true,
     transparent: true,
-    sizeAttenuation: true
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
 });
 
-const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
-group.add(particleSystem);
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
 
-const lineMaterial = new THREE.LineBasicMaterial({
-    vertexColors: true,
-    blending: THREE.AdditiveBlending,
-    transparent: true,
-    opacity: 0.5
-});
+// Camera Position
+camera.position.z = 30;
 
-const lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
-group.add(lineMesh);
-
-// --- INTERACTION ---
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX - window.innerWidth / 2);
-    mouseY = (e.clientY - window.innerHeight / 2);
-});
-
-// --- ANIMATION ---
+// --- ANIMATION LOOP ---
 const clock = new THREE.Clock();
 
 function animate() {
-    const time = clock.getElapsedTime();
+    const elapsedTime = clock.getElapsedTime();
 
-    let vertexIdx = 0;
-    let colorIdx = 0;
-    let lineCount = 0;
+    const positions = particles.geometry.attributes.position.array;
+    for (let i = 0; i < count; i++) {
+        const i3 = i * 3;
+        
+        // Falling motion
+        positions[i3 + 1] -= 0.15 + (Math.random() * 0.05); // Variable fall speed
 
-    for (let i = 0; i < particleCount; i++) {
-        const node = nodes[i];
-
-        // Movement
-        node.x += node.velocity.x;
-        node.y += node.velocity.y;
-        node.z += node.velocity.z;
-
-        // Bounce
-        if (node.x < -400 || node.x > 400) node.velocity.x *= -1;
-        if (node.y < -400 || node.y > 400) node.velocity.y *= -1;
-        if (node.z < -400 || node.z > 400) node.velocity.z *= -1;
-
-        particlePositions[i * 3] = node.x;
-        particlePositions[i * 3 + 1] = node.y;
-        particlePositions[i * 3 + 2] = node.z;
-
-        // Check distances for lines
-        for (let j = i + 1; j < particleCount; j++) {
-            const node2 = nodes[j];
-            const dx = node.x - node2.x;
-            const dy = node.y - node2.y;
-            const dz = node.z - node2.z;
-            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-            if (dist < maxDistance) {
-                const alpha = 1.0 - dist / maxDistance;
-
-                linePositions[vertexIdx++] = node.x;
-                linePositions[vertexIdx++] = node.y;
-                linePositions[vertexIdx++] = node.z;
-
-                linePositions[vertexIdx++] = node2.x;
-                linePositions[vertexIdx++] = node2.y;
-                linePositions[vertexIdx++] = node2.z;
-
-                // Blue to Cyan gradient lines
-                lineColors[colorIdx++] = 0.0; // R
-                lineColors[colorIdx++] = 0.6 * alpha; // G
-                lineColors[colorIdx++] = 1.0 * alpha; // B
-
-                lineColors[colorIdx++] = 0.0;
-                lineColors[colorIdx++] = 1.0 * alpha;
-                lineColors[colorIdx++] = 1.0 * alpha;
-
-                lineCount++;
-            }
+        // Reset to top when it goes below view
+        if (positions[i3 + 1] < -50) {
+            positions[i3 + 1] = 50;
+            positions[i3] = (Math.random() - 0.5) * 150; // Randomize horizontal on reset
         }
     }
 
-    particleSystem.geometry.attributes.position.needsUpdate = true;
-    lineMesh.geometry.setAttribute('position', new THREE.BufferAttribute(linePositions.slice(0, vertexIdx), 3));
-    lineMesh.geometry.setAttribute('color', new THREE.BufferAttribute(lineColors.slice(0, colorIdx), 3));
+    particles.geometry.attributes.position.needsUpdate = true;
 
-    // Subtle rotation and parallax
-    group.rotation.y += 0.001;
-    group.rotation.x += (mouseY * 0.00005 - group.rotation.x) * 0.05;
-    group.rotation.z += (mouseX * 0.00005 - group.rotation.z) * 0.05;
-
+    // Subtle camera tilt
+    camera.position.x += (Math.sin(elapsedTime * 0.5) * 0.05);
     camera.lookAt(scene.position);
+
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
 
-camera.position.z = 1000;
 animate();
 
+// Resizing
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
