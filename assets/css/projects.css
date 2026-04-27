@@ -63,7 +63,7 @@ section{
   text-align: center;
 }
 .heading span{
-  color: rgb(115, 3, 167);
+  color: #ff2d75;
 }
 header .logo{
   font-size: 1.9rem;
@@ -166,7 +166,7 @@ header .navbar ul li a:hover{
   padding: 1rem;
 }
 .work .heading span{
-  color: rgb(255, 230, 0);
+  color: #ff2d75;
 }
 .work .button-group{
   display: flex;
