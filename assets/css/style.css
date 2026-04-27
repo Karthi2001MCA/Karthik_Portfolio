@@ -23,9 +23,9 @@
   --accent: #6ab4ff;
   /* Soft Blue Accent */
 
-  --pink: #ff2d75;
-  /* Dark Pink / Neon Magenta */
-  --pink-glow: rgba(255, 45, 117, 0.6);
+  --pink: #ff00df;
+  /* Match the gradient start */
+  --pink-glow: rgba(255, 0, 223, 0.4);
 
   /* 2. Glassmorphism System (Matrix Mode) */
   --glass-bg: rgba(5, 5, 25, 0.75);
