@@ -7,37 +7,37 @@
 
 :root {
   /* 1. Color Palette: Matrix Futuristic */
-  --bg-color: #020a02;
-  /* Deep Matrix Black-Green */
-  --bg-alt: #0a160a;
-  /* Dark Green tinted */
+  --bg-color: #020208;
+  /* Deep Matrix Black-Blue */
+  --bg-alt: #0a0a1a;
+  /* Dark Blue tinted */
 
-  --primary: #00ff41;
-  /* Matrix Neon Green */
-  --primary-glow: rgba(0, 255, 65, 0.6);
+  --primary: #00aaff;
+  /* Matrix Neon Blue */
+  --primary-glow: rgba(0, 170, 255, 0.6);
 
-  --secondary: #39ff14;
-  /* Bright Lime Green */
-  --secondary-glow: rgba(57, 255, 20, 0.5);
+  --secondary: #14d4ff;
+  /* Bright Cyan Blue */
+  --secondary-glow: rgba(20, 212, 255, 0.5);
 
-  --accent: #7dff6a;
-  /* Soft Green Accent */
+  --accent: #6ab4ff;
+  /* Soft Blue Accent */
 
   /* 2. Glassmorphism System (Matrix Mode) */
-  --glass-bg: rgba(5, 20, 5, 0.75);
-  --glass-border: rgba(0, 255, 65, 0.25);
-  /* Green border */
-  --glass-highlight: rgba(0, 255, 65, 0.15);
-  --glass-shadow: 0 0 25px rgba(0, 255, 65, 0.2);
-  /* Neon green glow */
+  --glass-bg: rgba(5, 5, 25, 0.75);
+  --glass-border: rgba(0, 170, 255, 0.25);
+  /* Blue border */
+  --glass-highlight: rgba(0, 170, 255, 0.15);
+  --glass-shadow: 0 0 25px rgba(0, 170, 255, 0.2);
+  /* Neon blue glow */
   --glass-blur: blur(12px);
 
   /* 3. Typography */
   --font-main: 'Plus Jakarta Sans', sans-serif;
-  --text-main: #e0ffe0;
-  /* Soft green-white */
-  --text-muted: #6fbf73;
-  /* Muted green */
+  --text-main: #e0e8ff;
+  /* Soft blue-white */
+  --text-muted: #6f8fbf;
+  /* Muted blue */
 
   /* 4. Layout */
   --nav-height: 80px;
@@ -135,7 +135,7 @@ body {
 .glass-card:hover {
   transform: translateY(-5px);
   border-color: var(--glass-highlight);
-  box-shadow: 0 12px 40px 0 rgba(0, 255, 65, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(0, 170, 255, 0.25);
 }
 
 /* Buttons */
@@ -144,7 +144,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1.2rem 3rem;
-  background: rgba(0, 255, 65, 0.1);
+  background: rgba(0, 170, 255, 0.1);
   color: var(--secondary);
   border: 1px solid var(--primary);
   border-radius: 50px;
@@ -190,7 +190,7 @@ header {
   padding: 1.5rem 3rem;
 
   /* Glass Effect */
-  background: rgba(2, 10, 2, 0.7);
+  background: rgba(2, 2, 12, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
@@ -500,7 +500,7 @@ footer {
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(2, 10, 2, 0.95);
+    background: rgba(2, 2, 12, 0.95);
     backdrop-filter: blur(20px);
     padding: 2rem;
     border-radius: 20px;
