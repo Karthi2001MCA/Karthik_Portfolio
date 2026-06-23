@@ -2,6 +2,7 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 import { experience, education } from "@/content/experience";
+import { asset } from "@/lib/asset";
 
 export default function ExperienceEducation() {
   return (
@@ -45,7 +46,7 @@ export default function ExperienceEducation() {
                 <Reveal key={edu.degree} delay={i * 0.08}>
                   <div className="glass-card flex items-center gap-5 p-6">
                     <Image
-                      src={edu.image}
+                      src={asset(edu.image)}
                       alt={edu.institution}
                       width={64}
                       height={64}

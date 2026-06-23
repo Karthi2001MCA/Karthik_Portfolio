@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, Eye, Code, CheckCircle2 } from "lucide-react";
 import { projects } from "@/content/projects";
 import QuantumBackground from "@/components/QuantumBackground";
+import { asset } from "@/lib/asset";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -63,7 +64,7 @@ export default async function ProjectPage({
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-[var(--color-glass-border)]">
           <Image
-            src={project.image}
+            src={asset(project.image)}
             alt={project.name}
             width={900}
             height={500}

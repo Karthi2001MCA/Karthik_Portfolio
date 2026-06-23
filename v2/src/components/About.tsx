@@ -2,6 +2,7 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 import { profile } from "@/content/profile";
+import { asset } from "@/lib/asset";
 
 export default function About() {
   const facts = [
@@ -19,7 +20,7 @@ export default function About() {
           <div className="glass-card flex flex-col items-center gap-10 p-8 md:flex-row md:p-10">
             <div className="w-full max-w-xs shrink-0 overflow-hidden rounded-2xl shadow-[0_0_25px_rgba(0,170,255,0.2)]">
               <Image
-                src={profile.profileImage}
+                src={asset(profile.profileImage)}
                 alt={profile.name}
                 width={400}
                 height={500}

@@ -4,6 +4,7 @@ import { Eye, Code, ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 import { projects } from "@/content/projects";
+import { asset } from "@/lib/asset";
 
 export default function Projects() {
   return (
@@ -17,7 +18,7 @@ export default function Projects() {
                 <Link href={`/projects/${project.slug}`} className="group block">
                   <div className="overflow-hidden rounded-xl">
                     <Image
-                      src={project.image}
+                      src={asset(project.image)}
                       alt={project.name}
                       width={600}
                       height={340}
