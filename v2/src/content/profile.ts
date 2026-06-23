@@ -9,7 +9,7 @@ export const profile = {
   ],
   tagline: "Aspiring Machine Learning Engineer | Python | SQL | Data Analytics | Power BI",
   location: "Kerala, India",
-  email: "sng22mca53@sngce.in",
+  email: "karthikbabu3026@gmail.com",
   phone: "+91 8075547810",
   degree: "MCA (CGPA: 7.15/10)",
   about:
@@ -19,7 +19,7 @@ export const profile = {
   socials: {
     linkedin: "https://www.linkedin.com/in/karthikbabudatanalyst/",
     github: "https://github.com/Karthi2001MCA",
-    email: "mailto:sng22mca53@sngce.in",
+    email: "mailto:karthikbabu3026@gmail.com",
     instagram: "https://www.instagram.com/karthik_babu",
   },
   profileImage: "/images/profile/profile_karthik.jpeg",
