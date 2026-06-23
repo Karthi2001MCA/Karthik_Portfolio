@@ -2,7 +2,7 @@
 
 Personal portfolio website showcasing my work as a Data Scientist and AI/ML Development Engineer. Built with modern web technologies and clean, organized code structure.
 
-<a href="https://karthikbabu.github.io/Karthik-Portfolio/" target="_blank">**Visit Portfolio** 🚀</a>
+<a href="https://Karthi2001MCA.github.io/Karthik_Portfolio/" target="_blank">**Visit Portfolio** 🚀</a>
 
 ## 👨‍💻 About Me
 
@@ -10,9 +10,9 @@ Motivated AI/ML Development Engineer with hands-on experience in building scalab
 
 ## 🛠️ Tech Stack
 
-[![HTML](https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)](https://github.com/Karthi2001MCA/Karthik-Portfolio/search?l=html)&nbsp;
-[![CSS](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)](https://github.com/Karthi2001MCA/Karthik-Portfolio/search?l=css)&nbsp;
-[![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/Karthi2001MCA/Karthik-Portfolio/search?l=javascript)
+[![HTML](https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)](https://github.com/Karthi2001MCA/Karthik_Portfolio/search?l=html)&nbsp;
+[![CSS](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)](https://github.com/Karthi2001MCA/Karthik_Portfolio/search?l=css)&nbsp;
+[![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://github.com/Karthi2001MCA/Karthik_Portfolio/search?l=javascript)
 <img alt="jQuery" src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/>
 
 **Libraries & Plugins:**
@@ -26,7 +26,7 @@ Motivated AI/ML Development Engineer with hands-on experience in building scalab
 ## 📂 Project Structure
 
 ```
-Karthik-Portfolio/
+Karthik_Portfolio/
 ├── index.html              # Main landing page
 ├── 404.html               # Custom error page
 ├── pages/                 # Additional pages
@@ -86,7 +86,6 @@ Feel free to reach out to me through any of the following platforms:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karthikbabudatanalyst/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Karthi2001MCA)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:karthikbabu3026@gmail.com)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/Karthikbabu)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/karthik_babu)
 
 ---
