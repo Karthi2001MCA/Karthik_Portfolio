@@ -1,11 +1,19 @@
 import Reveal from "./Reveal";
 
-export default function SectionTitle({ children }: { children: React.ReactNode }) {
+export default function SectionTitle({
+  eyebrow,
+  children,
+  subtitle,
+}: {
+  eyebrow?: string;
+  children: React.ReactNode;
+  subtitle?: string;
+}) {
   return (
-    <Reveal>
-      <h2 className="text-gradient mb-14 text-center text-4xl font-extrabold md:text-5xl [text-shadow:0_0_20px_rgba(157,0,255,0.3)]">
-        {children}
-      </h2>
+    <Reveal className="mx-auto mb-14 max-w-2xl text-center">
+      {eyebrow && <span className="eyebrow mb-3">{eyebrow}</span>}
+      <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{children}</h2>
+      {subtitle && <p className="mt-4 text-base text-muted md:text-lg">{subtitle}</p>}
     </Reveal>
   );
 }

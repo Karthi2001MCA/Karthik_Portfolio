@@ -1,4 +1,3 @@
-import QuantumBackground from "@/components/QuantumBackground";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -6,13 +5,13 @@ import Skills from "@/components/Skills";
 import ExperienceEducation from "@/components/ExperienceEducation";
 import Projects from "@/components/Projects";
 import MLDemo from "@/components/MLDemo";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <QuantumBackground />
       <Navbar />
       <main>
         <Hero />
@@ -21,6 +20,7 @@ export default function Home() {
         <Projects />
         <MLDemo />
         <ExperienceEducation />
+        <Certificates />
         <Contact />
       </main>
       <Footer />

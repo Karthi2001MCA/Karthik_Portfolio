@@ -25,7 +25,6 @@ export default function Contact() {
       message: string;
     };
 
-    // No backend configured → fall back to a mailto: draft.
     if (!FORMSPREE_ENDPOINT) {
       const subject = encodeURIComponent(`Portfolio message from ${data.name}`);
       const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`);
@@ -50,92 +49,69 @@ export default function Contact() {
     }
   }
 
-  const inputClass =
-    "w-full rounded-lg border border-[var(--color-glass-border)] bg-white/5 p-4 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-primary)] focus:outline-none";
-
   return (
-    <section id="contact" className="px-6 py-28 md:px-10">
-      <div className="mx-auto max-w-[1200px]">
-        <SectionTitle>Contact Me</SectionTitle>
-        <Reveal>
-          <div className="glass-card mx-auto max-w-xl p-8 md:p-10">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <input name="name" required placeholder="Name" className={inputClass} />
-              <input
-                name="email"
-                type="email"
-                required
-                placeholder="Email"
-                className={inputClass}
-              />
-              <textarea
-                name="message"
-                required
-                rows={5}
-                placeholder="Message"
-                className={inputClass}
-              />
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="btn-glow justify-center disabled:opacity-60"
+    <section id="contact" className="bg-paper-2 px-6 py-24 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle eyebrow="Contact" subtitle="Have a role or project in mind? Let's talk.">
+          Get in touch
+        </SectionTitle>
+
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+          {/* Left: direct details */}
+          <Reveal>
+            <div className="card flex h-full flex-col justify-center gap-6 p-8">
+              <div>
+                <h3 className="text-lg font-bold">Let&apos;s connect</h3>
+                <p className="mt-2 text-sm text-muted">
+                  I&apos;m open to data science and ML roles, internships, and collaborations.
+                </p>
+              </div>
+              <a
+                href={profile.socials.email}
+                className="flex items-center gap-3 text-sm font-medium text-ink hover:text-accent"
               >
-                {status === "sending" ? "Sending..." : "Send Message"}
-                <Send size={18} />
-              </button>
-
-              {status === "ok" && (
-                <p className="flex items-center gap-2 text-sm text-green-400">
-                  <CheckCircle size={16} /> Thanks! Your message was sent.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="flex items-center gap-2 text-sm text-red-400">
-                  <AlertCircle size={16} /> Something went wrong. Email me directly below.
-                </p>
-              )}
-            </form>
-
-            <div className="mt-8 text-center">
-              <p>
-                Email:{" "}
-                <a
-                  href={profile.socials.email}
-                  className="text-[var(--color-primary)] hover:underline"
-                >
-                  {profile.email}
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-soft text-accent">
+                  <Mail size={18} />
+                </span>
+                {profile.email}
+              </a>
+              <div className="flex gap-3">
+                <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="icon-btn">
+                  <Linkedin size={18} />
                 </a>
-              </p>
-              <div className="mt-4 flex justify-center gap-4">
-                <a
-                  href={profile.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass)] transition hover:-translate-y-1 hover:bg-[var(--color-primary)] hover:text-white"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href={profile.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass)] transition hover:-translate-y-1 hover:bg-[var(--color-primary)] hover:text-white"
-                >
-                  <Github size={20} />
-                </a>
-                <a
-                  href={profile.socials.email}
-                  aria-label="Email"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass)] transition hover:-translate-y-1 hover:bg-[var(--color-primary)] hover:text-white"
-                >
-                  <Mail size={20} />
+                <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="icon-btn">
+                  <Github size={18} />
                 </a>
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+
+          {/* Right: form */}
+          <Reveal delay={0.1}>
+            <form onSubmit={handleSubmit} className="card flex flex-col gap-4 p-8">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input name="name" required placeholder="Your name" className="field" />
+                <input name="email" type="email" required placeholder="Your email" className="field" />
+              </div>
+              <textarea name="message" required rows={5} placeholder="Your message" className="field resize-none" />
+              <button type="submit" disabled={status === "sending"} className="btn btn-primary w-full disabled:opacity-60">
+                {status === "sending" ? "Sending..." : "Send Message"}
+                <Send size={17} />
+              </button>
+
+              {status === "ok" && (
+                <p className="flex items-center gap-2 text-sm text-emerald-600">
+                  <CheckCircle size={16} /> Thanks! Your email draft is ready to send.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="flex items-center gap-2 text-sm text-red-600">
+                  <AlertCircle size={16} /> Something went wrong — email me directly above.
+                </p>
+              )}
+            </form>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

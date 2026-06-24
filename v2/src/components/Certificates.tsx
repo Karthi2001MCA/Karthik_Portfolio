@@ -1,47 +1,39 @@
+import { FileText, ExternalLink } from "lucide-react";
+import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 import { certificates } from "@/content/certificates";
-
-const encode = (file: string) => `/images/certificates/${encodeURIComponent(file)}`;
-
-function Row({ reverse }: { reverse?: boolean }) {
-  // duplicate the list so the marquee loops seamlessly
-  const items = [...certificates, ...certificates];
-  return (
-    <div
-      className={`flex w-max gap-6 ${
-        reverse ? "animate-[marquee-reverse_50s_linear_infinite]" : "animate-[marquee_50s_linear_infinite]"
-      }`}
-    >
-      {items.map((cert, i) => (
-        <div
-          key={`${cert.id}-${i}`}
-          className="group relative h-[200px] w-[300px] shrink-0 overflow-hidden rounded-xl border border-[var(--color-glass-border)] shadow-[0_5px_15px_rgba(0,0,0,0.3)]"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={encode(cert.image)}
-            alt={cert.name}
-            loading="lazy"
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 px-3 text-center text-sm font-semibold opacity-0 transition group-hover:opacity-100">
-            {cert.name}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+import { asset } from "@/lib/asset";
 
 export default function Certificates() {
   return (
-    <section id="certificates" className="py-28">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-        <SectionTitle>Certifications</SectionTitle>
-      </div>
-      <div className="flex flex-col gap-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <Row />
-        <Row reverse />
+    <section id="certificates" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle eyebrow="Credentials" subtitle="Verified certificates and degrees.">
+          Certifications
+        </SectionTitle>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {certificates.map((cert, i) => (
+            <Reveal key={cert.file} delay={i * 0.07}>
+              <a
+                href={asset(cert.file)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-hover group flex h-full flex-col p-6"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                  <FileText size={22} />
+                </span>
+                <h3 className="mt-5 text-base font-bold leading-snug">{cert.title}</h3>
+                <p className="mt-1.5 flex-1 text-sm text-muted">{cert.issuer}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                  View certificate
+                  <ExternalLink size={15} className="transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

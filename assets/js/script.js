@@ -162,68 +162,60 @@ function showProjects(projects) {
 }
 
 function showCertificates(certificates) {
-    const section = document.querySelector("#certificates");
-    if (!section) {
-        console.error("Certificates section not found!");
-        return;
-    }
-
-    // Ensure container exists
-    let container = section.querySelector(".box-container");
-    if (container) {
-        // Replace box-container with carousel-container for our new style
-        container.classList.remove("box-container", "grid-container");
-        container.classList.add("carousel-container");
-        container.innerHTML = ""; // Clear existing
-    } else {
-        // Or find existing carousel-container
-        container = section.querySelector(".carousel-container");
-    }
-
+    const container = document.querySelector("#certificates .certificates-grid");
     if (!container) {
         console.error("Certificates container not found!");
         return;
     }
 
-    // Sort certificates by ID
-    certificates.sort((a, b) => a.id - b.id);
-
-    // Split into two rows
-    const mid = Math.ceil(certificates.length / 2);
-    const row1Data = certificates.slice(0, mid);
-    const row2Data = certificates.slice(mid);
-
-    // Helper to generate row HTML
-    const createRow = (items, reverse = false) => {
-        // Duplicate items for infinite scroll illusion (x4)
-        const repeatedItems = [...items, ...items, ...items, ...items];
-
-        let rowContent = repeatedItems.map(cert => {
-            let imageSrc = cert.image === "placeholder.png"
-                ? "https://via.placeholder.com/300x200?text=Certificate"
-                : `./assets/images/certificates/${cert.image}`;
-
-            return `
-            <div class="certificate-card glass-card" style="padding:0; min-width:300px;">
-                <img draggable="false" 
-                     src="${imageSrc}" 
-                     alt="${cert.name}" 
-                     style="width:100%; height:100%; object-fit:cover; display:block;"
-                     onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=Certificate';"/>
-                <div class="overlay">
-                    <a href="${cert.links.view}" class="btn" target="_blank" style="background:white; color:var(--primary);">
-                        <i class="fas fa-eye"></i> View
-                    </a>
-                </div>
-            </div>`;
-        }).join('');
-
-        return `<div class="carousel-row ${reverse ? 'reverse' : ''}">${rowContent}</div>`;
+    // Category icon mapping
+    const categoryIcons = {
+        "degree": "fas fa-graduation-cap",
+        "analytics": "fas fa-chart-bar",
+        "ai": "fas fa-robot",
+        "programming": "fas fa-code",
+        "data_science": "fas fa-database",
+        "course": "fas fa-certificate"
     };
 
-    // Inject Rows
-    container.innerHTML = createRow(row1Data, false) + createRow(row2Data, true);
+    // Category color mapping
+    const categoryColors = {
+        "degree": "#9d00ff",
+        "analytics": "#00d4ff",
+        "ai": "#ff00df",
+        "programming": "#00aaff",
+        "data_science": "#14d4ff",
+        "course": "#6ab4ff"
+    };
+
+    let certHTML = "";
+    certificates.sort((a, b) => a.id - b.id);
+
+    certificates.forEach((cert, index) => {
+        const iconClass = categoryIcons[cert.category] || "fas fa-certificate";
+        const accentColor = categoryColors[cert.category] || "#00aaff";
+
+        certHTML += `
+        <div class="glass-card certificate-item tilt" style="--accent: ${accentColor}; animation-delay: ${index * 0.15}s;">
+            <div class="cert-icon-wrap" style="background: linear-gradient(135deg, ${accentColor}22, ${accentColor}08);">
+                <i class="${iconClass}" style="font-size: 4rem; color: ${accentColor}; filter: drop-shadow(0 0 12px ${accentColor}66);"></i>
+            </div>
+            <div class="cert-info">
+                <span class="cert-category" style="color: ${accentColor};">${cert.category.replace('_', ' ').toUpperCase()}</span>
+                <h3 class="cert-title">${cert.name}</h3>
+                <p class="cert-desc">${cert.desc}</p>
+            </div>
+            <div class="cert-actions">
+                <a href="${cert.file}" class="btn cert-btn" target="_blank">
+                    <i class="fas fa-eye"></i> View Certificate
+                </a>
+            </div>
+        </div>`;
+    });
+
+    container.innerHTML = certHTML;
 }
+
 
 // Ensure data is loaded before calling display functions
 // Using simple check since scripts are loaded synchronously in order

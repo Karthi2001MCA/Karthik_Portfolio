@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import Image from "next/image";
+import { Github, Linkedin, Mail, ArrowRight, Download } from "lucide-react";
 import { profile } from "@/content/profile";
+import { asset } from "@/lib/asset";
 
 function useTypewriter(words: string[]) {
   const [text, setText] = useState("");
@@ -21,7 +22,7 @@ function useTypewriter(words: string[]) {
       setText(next);
 
       if (!deleting && next === current) {
-        setTimeout(() => setDeleting(true), 1200);
+        setTimeout(() => setDeleting(true), 1400);
       } else if (deleting && next === "") {
         setDeleting(false);
         setWordIndex((i) => i + 1);
@@ -40,80 +41,75 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center px-6 pt-24 md:px-10"
+      className="relative overflow-hidden bg-paper-2 px-6 pt-32 pb-20 md:px-10 md:pt-40 md:pb-28"
     >
-      <div className="mx-auto w-full max-w-[1200px]">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl"
-        >
-          <h1 className="text-5xl font-extrabold leading-tight md:text-7xl">
-            Hello,
-            <br />
-            I&apos;m <span className="text-gradient">{profile.name}</span>
+      {/* soft accent glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-accent-soft blur-3xl"
+      />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <span className="eyebrow mb-5">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Available for opportunities
+          </span>
+
+          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl">
+            Karthik Babu
           </h1>
 
-          <h2 className="mt-6 text-3xl font-bold md:text-4xl">
-            I am a{" "}
-            <span className="text-[var(--color-violet)]">{typed}</span>
-            <span className="animate-pulse text-[var(--color-secondary)]">|</span>
+          <h2 className="mt-4 text-xl font-semibold text-body md:text-2xl">
+            I&apos;m a{" "}
+            <span className="text-accent">{typed}</span>
+            <span className="ml-0.5 inline-block w-0.5 animate-pulse bg-accent align-middle" style={{ height: "1.1em" }} />
           </h2>
 
-          <p className="mt-6 text-lg text-[var(--color-text-muted)] md:text-xl">
-            {profile.tagline}
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+            {profile.about}
           </p>
 
-          <div className="mt-8 flex gap-4">
-            <SocialIcon href={profile.socials.linkedin} label="LinkedIn">
-              <Linkedin size={20} />
-            </SocialIcon>
-            <SocialIcon href={profile.socials.github} label="GitHub">
-              <Github size={20} />
-            </SocialIcon>
-            <SocialIcon href={profile.socials.email} label="Email">
-              <Mail size={20} />
-            </SocialIcon>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#projects" className="btn-glow">
-              View My Work <ArrowDown size={18} />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" className="btn btn-primary">
+              View My Work <ArrowRight size={18} />
             </a>
             <a
               href={profile.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow"
+              className="btn btn-outline"
             >
-              Download Resume
+              <Download size={18} /> Download Resume
             </a>
           </div>
-        </motion.div>
+
+          <div className="mt-8 flex gap-3">
+            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="icon-btn">
+              <Linkedin size={20} />
+            </a>
+            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="icon-btn">
+              <Github size={20} />
+            </a>
+            <a href={profile.socials.email} aria-label="Email" className="icon-btn">
+              <Mail size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* Portrait */}
+        <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
+          <div className="absolute inset-0 -rotate-3 rounded-[2rem] bg-accent/10" aria-hidden />
+          <div className="relative overflow-hidden rounded-[2rem] border border-line bg-paper shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)]">
+            <Image
+              src={asset(profile.profileImage)}
+              alt={profile.name}
+              width={520}
+              height={620}
+              priority
+              className="h-auto w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </section>
-  );
-}
-
-function SocialIcon({
-  href,
-  label,
-  children,
-}: {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass)] text-[var(--color-text)] transition hover:-translate-y-1 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white hover:shadow-[0_0_15px_var(--color-primary)]"
-    >
-      {children}
-    </a>
   );
 }

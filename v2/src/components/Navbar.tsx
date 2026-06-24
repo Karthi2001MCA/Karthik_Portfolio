@@ -8,13 +8,22 @@ const LINKS = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#demo", label: "Live Demo" },
+  { href: "#demo", label: "Demo" },
+  { href: "#certificates", label: "Certificates" },
   { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const sections = LINKS.map((l) => document.querySelector(l.href)).filter(
@@ -27,7 +36,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActive("#" + entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px" }
+      { rootMargin: "-45% 0px -50% 0px" }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -35,47 +44,54 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed left-1/2 top-4 z-50 flex w-[92%] max-w-[1200px] -translate-x-1/2 items-center justify-between rounded-full border border-[var(--color-glass-border)] bg-[rgba(2,2,12,0.7)] px-6 py-3 backdrop-blur-xl md:px-8">
-      <a href="#home" className="flex items-center gap-2 text-xl font-extrabold md:text-2xl">
-        <span className="text-secondary">◈</span> Karthik Babu
-      </a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-line bg-paper/85 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-8">
+        <a href="#home" className="flex items-center gap-2 text-lg font-extrabold tracking-tight text-ink">
+          Karthik Babu<span className="text-accent">.</span>
+        </a>
 
-      <nav className="hidden md:block">
-        <ul className="flex gap-7">
+        <nav className="hidden items-center gap-1 md:flex">
           {LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className={`text-sm font-medium transition hover:text-[var(--color-text)] ${
-                  active === l.href
-                    ? "text-[var(--color-text)] [text-shadow:0_0_10px_var(--color-secondary)]"
-                    : "text-[var(--color-text-muted)]"
-                }`}
-              >
-                {l.label}
-              </a>
-            </li>
+            <a
+              key={l.href}
+              href={l.href}
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                active === l.href
+                  ? "bg-accent-soft text-accent"
+                  : "text-muted hover:text-ink"
+              }`}
+            >
+              {l.label}
+            </a>
           ))}
-        </ul>
-      </nav>
+        </nav>
 
-      <button
-        className="text-2xl md:hidden"
-        onClick={() => setOpen((v) => !v)}
-        aria-label="Toggle menu"
-      >
-        {open ? <X /> : <Menu />}
-      </button>
+        <button
+          className="text-ink md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
 
       {open && (
-        <nav className="absolute left-0 top-full mt-3 w-full rounded-3xl border border-[var(--color-glass-border)] bg-[rgba(2,2,12,0.95)] p-6 backdrop-blur-xl md:hidden">
-          <ul className="flex flex-col items-center gap-5">
+        <nav className="border-t border-line bg-paper px-6 py-4 md:hidden">
+          <ul className="flex flex-col gap-1">
             {LINKS.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                  className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                    active === l.href ? "bg-accent-soft text-accent" : "text-body hover:bg-paper-2"
+                  }`}
                 >
                   {l.label}
                 </a>

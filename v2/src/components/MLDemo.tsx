@@ -13,13 +13,11 @@ export default function MLDemo() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Upload an image to classify it in real time.");
   const imgRef = useRef<HTMLImageElement>(null);
-  // cache the loaded model across runs
   const modelRef = useRef<unknown>(null);
 
   async function getModel() {
     if (modelRef.current) return modelRef.current;
     setStatus("Loading the vision model (first run only)…");
-    // dynamic import keeps TF.js out of the initial bundle
     const tf = await import("@tensorflow/tfjs");
     await tf.ready();
     const mobilenet = await import("@tensorflow-models/mobilenet");
@@ -55,26 +53,24 @@ export default function MLDemo() {
   }
 
   return (
-    <section id="demo" className="px-6 py-28 md:px-10">
-      <div className="mx-auto max-w-[1200px]">
-        <SectionTitle>Live ML Demo</SectionTitle>
-        <Reveal>
-          <p className="mx-auto mb-10 max-w-2xl text-center text-[var(--color-text-muted)]">
-            A real image-classification model (MobileNet v2) running{" "}
-            <span className="text-[var(--color-secondary)]">100% in your browser</span> with
-            TensorFlow.js — no server, no upload. Try a photo of an animal, object, or food.
-          </p>
-        </Reveal>
+    <section id="demo" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          eyebrow="Live Demo"
+          subtitle="A real MobileNet v2 model running 100% in your browser with TensorFlow.js — no server, no upload."
+        >
+          Try a model in your browser
+        </SectionTitle>
 
         <Reveal>
-          <div className="glass-card mx-auto grid max-w-4xl gap-8 p-8 md:grid-cols-2">
+          <div className="card mx-auto grid max-w-4xl gap-8 p-8 md:grid-cols-2">
             <div className="flex flex-col gap-4">
-              <label className="btn-glow w-fit cursor-pointer">
+              <label className="btn btn-outline w-fit cursor-pointer">
                 <Upload size={18} /> Choose Image
                 <input type="file" accept="image/*" onChange={onFile} className="hidden" />
               </label>
 
-              <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-[var(--color-glass-border)] bg-black/30">
+              <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-line bg-paper-2">
                 {imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -85,16 +81,14 @@ export default function MLDemo() {
                     className="h-full w-full object-contain"
                   />
                 ) : (
-                  <span className="px-6 text-center text-sm text-[var(--color-text-muted)]">
-                    No image selected
-                  </span>
+                  <span className="px-6 text-center text-sm text-muted">No image selected</span>
                 )}
               </div>
 
               <button
                 onClick={classify}
                 disabled={!imageUrl || loading}
-                className="btn-glow justify-center disabled:opacity-50"
+                className="btn btn-primary justify-center disabled:opacity-50"
               >
                 {loading ? <Loader2 className="animate-spin" size={18} /> : <Cpu size={18} />}
                 {loading ? "Working…" : "Classify"}
@@ -102,20 +96,20 @@ export default function MLDemo() {
             </div>
 
             <div className="flex flex-col">
-              <h3 className="mb-3 text-lg font-bold text-[var(--color-pink)]">Predictions</h3>
-              <p className="mb-4 text-sm text-[var(--color-text-muted)]">{status}</p>
-              <div className="flex flex-col gap-3">
+              <h3 className="mb-2 text-base font-bold">Predictions</h3>
+              <p className="mb-5 text-sm text-muted">{status}</p>
+              <div className="flex flex-col gap-4">
                 {predictions.map((p) => (
                   <div key={p.className}>
                     <div className="mb-1 flex justify-between text-sm">
-                      <span className="capitalize">{p.className}</span>
-                      <span className="text-[var(--color-secondary)]">
+                      <span className="font-medium capitalize text-ink">{p.className}</span>
+                      <span className="font-semibold text-accent">
                         {(p.probability * 100).toFixed(1)}%
                       </span>
                     </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div className="h-2 overflow-hidden rounded-full bg-paper-3">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[var(--color-pink)] via-[var(--color-violet)] to-[var(--color-secondary)]"
+                        className="h-full rounded-full bg-accent"
                         style={{ width: `${p.probability * 100}%` }}
                       />
                     </div>

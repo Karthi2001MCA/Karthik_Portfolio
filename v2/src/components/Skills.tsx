@@ -4,32 +4,35 @@ import { skills } from "@/content/skills";
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-28 md:px-10">
-      <div className="mx-auto max-w-[1200px]">
-        <SectionTitle>Skills</SectionTitle>
-        <div className="flex flex-col gap-12">
+    <section id="skills" className="bg-paper-2 px-6 py-24 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle eyebrow="Skills" subtitle="Tools and techniques I work with.">
+          Technical toolkit
+        </SectionTitle>
+
+        <div className="flex flex-col gap-10">
           {Object.entries(skills).map(([category, items], idx) => (
             <Reveal key={category} delay={idx * 0.05}>
               <div>
-                <h3 className="mb-6 border-l-4 border-[var(--color-pink)] pl-3 text-xl font-bold text-[var(--color-pink)]">
+                <h3 className="mb-5 text-sm font-bold uppercase tracking-wide text-muted">
                   {category}
                 </h3>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+                <div className="flex flex-wrap gap-3">
                   {items.map((skill) => (
                     <div
                       key={skill.name}
-                      className="glass-card flex flex-col items-center justify-center gap-3 p-5 text-center"
+                      className="card card-hover flex items-center gap-3 px-4 py-3"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={skill.icon}
-                        alt={skill.name}
-                        width={48}
-                        height={48}
+                        alt=""
+                        width={28}
+                        height={28}
                         loading="lazy"
-                        className="h-12 w-12 object-contain drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]"
+                        className="h-7 w-7 object-contain"
                       />
-                      <span className="text-sm">{skill.name}</span>
+                      <span className="text-sm font-medium text-ink">{skill.name}</span>
                     </div>
                   ))}
                 </div>
