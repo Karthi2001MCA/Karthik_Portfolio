@@ -18,7 +18,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+    <section id="about" className="px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="About" subtitle="Turning data into decisions.">
           A bit about me

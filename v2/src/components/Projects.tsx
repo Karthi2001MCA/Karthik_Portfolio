@@ -8,7 +8,7 @@ import { asset } from "@/lib/asset";
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+    <section id="projects" className="px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Work" subtitle="Selected projects and case studies.">
           Featured projects

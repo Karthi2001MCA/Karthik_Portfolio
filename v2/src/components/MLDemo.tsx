@@ -53,7 +53,7 @@ export default function MLDemo() {
   }
 
   return (
-    <section id="demo" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+    <section id="demo" className="px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
           eyebrow="Live Demo"

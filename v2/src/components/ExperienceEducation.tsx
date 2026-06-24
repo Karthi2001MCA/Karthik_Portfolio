@@ -7,7 +7,7 @@ import { asset } from "@/lib/asset";
 
 export default function ExperienceEducation() {
   return (
-    <section id="experience" className="bg-paper-2 px-6 py-24 md:px-10 md:py-28">
+    <section id="experience" className="bg-paper-2/70 px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Journey" subtitle="Where I've worked and studied.">
           Experience &amp; Education

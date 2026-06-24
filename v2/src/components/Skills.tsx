@@ -4,7 +4,7 @@ import { skills } from "@/content/skills";
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-paper-2 px-6 py-24 md:px-10 md:py-28">
+    <section id="skills" className="bg-paper-2/70 px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Skills" subtitle="Tools and techniques I work with.">
           Technical toolkit

@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-paper-2 px-6 pt-32 pb-20 md:px-10 md:pt-40 md:pb-28"
+      className="relative overflow-hidden px-6 pt-32 pb-20 md:px-10 md:pt-40 md:pb-28"
     >
       {/* soft accent glow */}
       <div

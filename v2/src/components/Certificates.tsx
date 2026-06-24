@@ -6,7 +6,7 @@ import { asset } from "@/lib/asset";
 
 export default function Certificates() {
   return (
-    <section id="certificates" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+    <section id="certificates" className="px-6 py-24 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionTitle eyebrow="Credentials" subtitle="Verified certificates and degrees.">
           Certifications

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, Eye, Code, CheckCircle2 } from "lucide-react";
 import { projects } from "@/content/projects";
 import { asset } from "@/lib/asset";
+import FuturisticBackground from "@/components/FuturisticBackground";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -37,7 +38,9 @@ export default async function ProjectPage({
   const cs = project.caseStudy;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:px-10">
+    <>
+      <FuturisticBackground />
+      <article className="mx-auto max-w-3xl px-6 py-20 md:px-10">
       <Link
         href="/#projects"
         className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-accent"
@@ -120,7 +123,8 @@ export default async function ProjectPage({
           </a>
         )}
       </div>
-    </article>
+      </article>
+    </>
   );
 }
 
